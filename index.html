@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>REST API and Python 3: the path to the future of Plone</title>
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/blood.css" id="theme">
+
+  <!-- Theme used for syntax highlighting of code -->
+  <link rel="stylesheet" href="lib/css/zenburn.css">
+
+  <link rel="stylesheet" href="lib/css/jquery.countdown.css">
+
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
+
+  <!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+</head>
+
+<body>
+
+  <div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+      <section>
+        <h3>REST API and Python 3</h3>
+        <h4>The path to the future of Plone</h4>
+        <img src="./img/plone-logo.png" style="border: 0" />
+        <p>
+          <small>by Mikel Larreategi <a href="https://twitter.com/erralin">@erralin</a></small>
+        </p>
+      </section>
+
+      <section>
+        <img src="./img/cs-team.jpeg" />
+        <aside class="notes">
+          I am Mikel Larreategi and work for CodeSyntax, an internet
+          company from Eibar in the Basque Country in norther Spain.
+
+          We are a group of 16 people working on the internet since 2001
+          and since the beginning we work with Python.
+
+          We started with plain Zope and back in 2005 started with Plone 2.1.
+          After that we have developed sites with all other Plone versions (2.5, 3, 4, and 5)
+
+          Our developers team is more or less 50%-50% of Django and Plone developers
+          although we do some other things too (mobile developments with angular
+          and ionic, some wordpress...)
+        </aside>
+
+      </section>
+
+      <section>
+        <h2>Plone Conference 2014: Bristol</h2>
+        <ul>
+          <li class="fragment">
+            Why Plone is going to die - by Andreas Jung - @MacYET <a href="https://vimeo.com/110402227">video</a>
+          </li>
+          <li class="fragment">
+            The Beauty and the Beast - Modern JS development with Angular JS and Plone - by Timo Stollenwerk -
+            @timostollenwerk - <a href="https://maurits.vanrees.org/weblog/archive/2014/10/angularjs-and-plone">summary</a>
+          </li>
+        </ul>
+
+        <aside class="notes">
+          The story I want to tell you started more or less in 2014 at the annual Plone Conference
+          in Bristol. There were 2 inspiring talks there
+        </aside>
+      </section>
+
+      <section>
+        <h2>Why Plone <em>was</em> going to die</h2>
+        <ul>
+          <li>
+            Stagnation
+          </li>
+          <li>
+            No plans for Python 3
+          </li>
+          <li>
+            Zope was dead
+          </li>
+          <li>
+            Several leading core-developers left
+          </li>
+          <li>
+            Several features unfinished and unpolished
+          </li>
+        </ul>
+        <aside class="notes">
+          According to Andreas, many things had happend on Plone world lately, such as the coming of
+          Dexterty, a new content-type framework, but the Plone community was shrinking.
+
+          Nobody was seeing any progress on the Zope-land (Zope is our application server, on top of that
+          is Plone built and we develop applications), there was no plans for Python 3 support, and it
+          looked like there was no much effort on evolving Plone.
+
+          Andreas even run a survey just before the conference to know what people thought about Plone, and
+          there was people (a majority of tyem) saying that we needed to abandon Zope and use Pyramid.
+        </aside>
+      </section>
+
+      <section>
+        <h3>
+          Modern JS development with Angular JS and Plone
+        </h3>
+        <ul>
+          <li>
+            We are not modernized enough regarding JS in Plone
+          </li>
+          <li>
+            We keep discussing and changing front-end frameworks
+          </li>
+          <li>
+            There is a promising world out there with frameworks like AngularJS
+          </li>
+        </ul>
+        <aside class="notes">
+          On the other side, Timo was more positive than Andreas. He said that the front-end frameworks
+          gave as an oportunity to evolve. But to get that, we needed to build a powerful REST API.
+        </aside>
+      </section>
+
+      <section>
+        <h2>Plone Conference 2015: Bucharest</h2>
+        <ul>
+          <li>Open Space: plone.restapi: a REST API for Plone</li>
+        </ul>
+        <aside class="notes">
+          Timo lead an Open Space in Bucharest where he presented his work on building a powerful REST API
+          for Plone. He was finding people to work on that because, like he said in Bristol, he thought that
+          this was a real way to prepare to the future for Plone.
+
+          Timo started working on the REST API and the guys from 4 Team work in Switzerland provided great features
+          such as compatibility for the old content-type framework.
+
+          We also provided some developer time and testing, because we had several cases where we needed to
+          show content from one site in another, and we found ourselves re-creating APIs to achieve that.
+        </aside>
+      </section>
+      <section>
+        <h2>plone.restapi 1.0a1 (July 2016)</h2>
+        <ul>
+          <li>
+            Basic content-type information
+          </li>
+          <li>
+            Basic content-negotiation
+          </li>
+          <li>
+            Basic content creation
+          </li>
+        </ul>
+        <aside class="notes">
+          The initial release contained all the basic stuff: content-type representation, basic CRUD operations, login
+          and full documentation.
+
+          The aim of the project was to provide a 100% test coverage and documentation for the REST API, and if
+          possible, a permanently updated documentation.
+        </aside>
+      </section>
+
+      <section>
+        <h2>plone.restapi internals</h2>
+        <ul>
+          <li>Content-negotiation:
+            <pre>Accept: application/json</pre>
+          </li>
+
+        </ul>
+        <aside class="notes">
+          As you may know in Plone any content-type can be added in any place in the content-tree. So it has no
+          sense to create an endpoint to return all the "News Items" or "Pages" or "Files" of the site.
+
+          Moreover we don't do rounting for our URLs. We do not have URL patterns to follow, so we need another
+          way to build API urls.
+
+          To achieve that Timo came up with a solution: use Content-Negotiation. This is an HTTP standard which says
+          that when querying any URL you can ask in which format do you want to have the response.
+        </aside>
+      </section>
+
+      <section>
+        Standard browser request:
+        <pre>
+
+          GET /plone HTTP/1.1
+        </pre>
+        Standard browser response:
+        <pre>
+         <code class="hljs" data-trim contenteditable="">
+HTTP/1.1 200 OK
+Content-Type: text/html
+
+           &lt;html>
+           ...
+           &lt;body>
+           ...
+         </code>
+        </pre>
+      </section>
+
+      <section>
+        API request for Plone
+        <pre>
+
+                  GET /plone HTTP/1.1
+                  Accept: application/json
+                </pre>
+        API response:
+        <pre>
+                 <code class="hljs" data-trim contenteditable="">
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "@components": {
+    "actions": {
+    "@id": "http://localhost:55001/plone/@actions"
+  },
+  ...
+}
+                 </code>
+                </pre>
+
+      </section>
+
+      <section>
+        <h2>
+          This is quite elegant, right?
+        </h2>
+
+        <aside class="notes">
+          This means that we can reuse all the URLs of our content of the site to get it's API
+          representation.
+        </aside>
+      </section>
+      <section>
+        <p>
+          If we have a URL https://mysite.com/my-page the same URL works both for the browser
+          and for the API
+        </p>
+      </section>
+      <section>
+        <h4>Add minimal children information to each page</h4>
+        <aside class="notes">
+          More over if we add minimal children information to each page, we can get all the contents
+          and this way build a site navigation
+        </aside>
+      </section>
+      <section>
+        <h4>Example</h4>
+        <pre>
+          <code class="hljs" data-trim contenteditable="">
+{
+    "@components": {
+        "breadcrumbs": {
+            "@id": "https://plonedemo.kitconcept.com/en/@breadcrumbs"
+        },
+        "navigation": {
+            "@id": "https://plonedemo.kitconcept.com/en/@navigation"
+        },
+        "workflow": {
+            "@id": "https://plonedemo.kitconcept.com/en/@workflow"
+        }
+    },
+    "@id": "https://plonedemo.kitconcept.com/en",
+    "@type": "LRF",
+    "UID": "fc836cdd270c41edbcae38c05708204c",
+    "contributors": [],
+    "created": "2018-03-07T10:06:48+00:00",
+    "creators": [
+        "admin"
+    ],
+    "description": "",
+    "effective": null,
+    "exclude_from_nav": true,
+    "expires": null,
+    "id": "en",
+    "is_folderish": true,
+    "items": [
+        {
+            "@id": "https://plonedemo.kitconcept.com/en/media",
+            "@type": "LIF",
+            "description": "",
+            "review_state": "published",
+            "title": "Media"
+        },
+        {
+            "@id": "https://plonedemo.kitconcept.com/en/frontpage",
+            "@type": "Document",
+            "description": "The ultimate Open Source Enterprise CMS",
+            "review_state": "published",
+            "title": "Welcome to Plone 5"
+        },
+        {
+            "@id": "https://plonedemo.kitconcept.com/en/demo",
+            "@type": "Folder",
+            "description": "Vestibulum dignissim erat id eros mollis vitae tempus leo ultricies. Cras dapibus suscipit consectetur.\nInteger tincidunt feugiat tristique. Sed et arcu risus. Nam venenatis, tortor ac tincidunt amet.",
+            "review_state": "published",
+            "title": "Demo"
+        }
+    ],
+    "items_total": 3,
+    "language": "en",
+    "layout": "folder_listing",
+    "modified": "2018-03-07T10:06:48+00:00",
+    "parent": {
+        "@id": "https://plonedemo.kitconcept.com",
+        "@type": "Plone Site",
+        "description": "",
+        "title": ""
+    },
+    "review_state": "published",
+    "rights": "",
+    "subjects": [],
+    "title": "English",
+    "version": "current"
+}
+                         </code>
+                        </pre>
+        <aside class="notes">
+          This is an example (cut) response for a given Plone site, like you see, we have information about the object
+          in the URL we are requesting, and minimal information about its children/contents.
+        </aside>
+      </section>
+      <section>
+        <h4>Extend the API to provide CMS features</h4>
+        <ul>
+          <li>Provide navigation menus and breadcrumbs</li>
+          <li>Content-type schemas based on JSON Schema to build forms</li>
+          <li>Search</li>
+          <li>Workflow support</li>
+          <li>Translation of content</li>
+          <li>i18n-zed screen messages</li>
+          <li>...</li>
+        </ul>
+        <aside class="notes">
+          In this years we have built several extensions for the API, such as:
+        </aside>
+      </section>
+
+      <section>
+        <h4>Volto: React based front-end for Plone</h4>
+        <ul>
+          <li><a href="https://github.com/plone/volto">https://github.com/plone/volto</a></li>
+          <li>Gutenberg project</li>
+        </ul>
+        <aside class="notes">
+          And what can we do with this for the future of Plone?
+          A react-based front-end for Plone.
+
+          You may know the Gutenberg project for Wordpress, which provides a new full-JS editor
+          for WordPress. Volto is the idea to have something similar for Plone. This way we decouple
+          all the Plone editing interface from the CMS, and add a way to customize in an easier way.
+
+          For us in the Plone world is sometimes hard to get front-end developers to do front-end-magic
+          because we have a very complex stack with many ways to do things and many different ways
+          to customize our front-end. With a project like Volto we embrace the front-end world, providing
+          a minimal set of tools in a JS framework to ease the development.
+
+          I am not an expert at all on JS and React but Volto is something like that.
+        </aside>
+      </section>
+
+      <section>
+        <p>
+
+          This approach is being used already in at least 2 sites:
+        </p>
+        <ul>
+          <li><a href="https://vhs-ehrenamtsportal.de/">https://vhs-ehrenamtsportal.de/</a></li>
+          <li><a href="https://www.zeelandia.de/">https://www.zeelandia.de/</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Python 3</h1>
+        <aside class="notes">
+          And in our way to the future, we need to talk seriously about Python 3
+        </aside>
+      </section>
+
+      <section>
+        <h2>Python 2 End Of Life</h2>
+        <div class="python-27-clock"></div>
+
+        <aside class="notes">
+          We all know that Python 3 is here since a decade or so, but we have made almost nothing about it
+          until recently.
+
+          Having the sword over our heads, a team composed by germans (always germas) have lead our path to Python 3
+        </aside>
+      </section>
+
+      <section>
+        <h2>Zope 4: Zope on Python 3</h2>
+        <ul>
+          <li>
+            Michael Howitz (Gocept Gbmh) has lead the effort
+          </li>
+          <li>
+            An upcoming final release (we are in beta 5)
+          </li>
+          <li>
+            New management interface (using bootstrap)
+          </li>
+          <li>
+            WSGI support
+          </li>
+          <li>
+            ZODB conversion tools from python 2 to python 3
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Plone 5.2: Plone on Python 3</h2>
+        <ul>
+          <li>
+            Philip Bauer (Starzel) proposed it and has lead it
+          </li>
+          <li>
+            No new features: it should work in Python 3 like in Python 2
+          </li>
+          <li>
+            Development sprints in Innsbruck, Halle, Munich, Plone Conferences, ...
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h3>Saltlabs sprint in Halle (last week)</h3>
+        <img src="./img/jensens.png" style="border:0" />
+
+      </section>
+      <section>
+        <p>This is the most important thing that has happened in our world since long time ago</p>
+        <p>It's something that assures that we will be able to jump to python 3</p>
+      </section>
+      <section>
+        <h3>Quoting Eric Steele @esteele</h3>
+        <p>For those who say that Plone is old, and has no future</p>
+        <ul>
+          <li class="fragment">Our grandfather's axe is still sharp as ever</li>
+          <li class="fragment">
+            This is our chance to come back and share you what we have learnt
+          </li>
+          <li class="fragment">
+            We were just watching.
+          </li>
+          <li class="fragment">
+            We are still here.
+          </li>
+          <li class="fragment">
+            We have always been here.
+          </li>
+          <li class="fragment">
+            We are here right now.
+          </li>
+        </ul>
+        <aside class="notes">
+          Like our Release Manager said some time ago after the release of Plone 5
+        </aside>
+      </section>
+      <section>
+        <h3>And we want to conquer the world
+      </section>
+      <section>
+        <h1>Thanks</h1>
+      </section>
+
+    </div>
+
+  </div>
+
+  <script src="lib/js/head.min.js"></script>
+  <script src="lib/js/jquery-2.2.4.min.js"></script>
+  <script src="lib/js/jquery.plugin.js"></script>
+  <script src="lib/js/jquery.countdown.min.js"></script>
+  <script src="lib/js/moment.min.js"></script>
+  <script src="js/reveal.js"></script>
+
+  <script>
+
+    // More info https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
+      center: true,
+
+      transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+      // More info https://github.com/hakimel/reveal.js#dependencies
+      dependencies: [
+        { src: 'lib/js/classList.js', condition: function () { return !document.body.classList; } },
+        { src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+        { src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+        { src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
+        { src: 'plugin/search/search.js', async: true },
+        { src: 'plugin/zoom-js/zoom.js', async: true },
+        { src: 'plugin/notes/notes.js', async: true }
+      ]
+    });
+
+    $(document).ready(function () {
+      var death = moment("20200101", "YYYYMMDD").utc().toDate();
+      $('.python-27-clock').countdown({
+        until: death,
+        format: 'YODHMS'
+      });
+    });
+
+  </script>
+
+</body>
+
+</html>
