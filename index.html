@@ -26,6 +26,7 @@
     link.type = 'text/css';
     link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
     document.getElementsByTagName('head')[0].appendChild(link);
+
   </script>
 
   <!--[if lt IE 9]>
@@ -417,7 +418,7 @@ Content-Type: application/json
             Michael Howitz (Gocept Gbmh) has lead the effort
           </li>
           <li>
-            An upcoming final release (we are in beta 5)
+            An upcoming final release (we are in beta 6 since thursday)
           </li>
           <li>
             New management interface (using bootstrap)
@@ -453,6 +454,10 @@ Content-Type: application/json
       <section>
         <p>This is the most important thing that has happened in our world since long time ago</p>
         <p>It's something that assures that we will be able to jump to python 3</p>
+      </section>
+      <section>
+        <h3>Yay!!!</h3>
+        <img src="./img/philip.png" style="border:0" />
       </section>
       <section>
         <h3>Quoting Eric Steele @esteele</h3>
@@ -498,7 +503,6 @@ Content-Type: application/json
   <script src="js/reveal.js"></script>
 
   <script>
-
     // More info https://github.com/hakimel/reveal.js#configuration
     Reveal.initialize({
       controls: true,
@@ -509,14 +513,43 @@ Content-Type: application/json
       transition: 'slide', // none/fade/slide/convex/concave/zoom
 
       // More info https://github.com/hakimel/reveal.js#dependencies
-      dependencies: [
-        { src: 'lib/js/classList.js', condition: function () { return !document.body.classList; } },
-        { src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
-        { src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
-        { src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
-        { src: 'plugin/search/search.js', async: true },
-        { src: 'plugin/zoom-js/zoom.js', async: true },
-        { src: 'plugin/notes/notes.js', async: true }
+      dependencies: [{
+          src: 'lib/js/classList.js',
+          condition: function () {
+            return !document.body.classList;
+          }
+        },
+        {
+          src: 'plugin/markdown/marked.js',
+          condition: function () {
+            return !!document.querySelector('[data-markdown]');
+          }
+        },
+        {
+          src: 'plugin/markdown/markdown.js',
+          condition: function () {
+            return !!document.querySelector('[data-markdown]');
+          }
+        },
+        {
+          src: 'plugin/highlight/highlight.js',
+          async: true,
+          callback: function () {
+            hljs.initHighlightingOnLoad();
+          }
+        },
+        {
+          src: 'plugin/search/search.js',
+          async: true
+        },
+        {
+          src: 'plugin/zoom-js/zoom.js',
+          async: true
+        },
+        {
+          src: 'plugin/notes/notes.js',
+          async: true
+        }
       ]
     });
 
